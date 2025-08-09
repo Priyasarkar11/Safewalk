@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SafeWalk 2.0 — SOS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="badge">SafeWalk 2.0</div>
+
+  <main class="wrap">
+    <header>
+      <h1>SafeWalk</h1>
+      <p class="sub">One-tap SOS — sends your live location to your emergency contact.</p>
+    </header>
+
+    <section class="card">
+      <div class="info">
+        <p><strong>Ready?</strong> If you feel unsafe, tap the red button below.</p>
+      </div>
+
+      <button id="sosBtn" class="sos">🚨 SEND SOS</button>
+      <p id="status" class="status">Waiting...</p>
+      <p class="hint">Tip: You can add this page to your phone's home screen for quick access.</p>
+    </section>
+
+    <footer class="footer">
+      <small>Demo mode available — toggle in README before going live.</small>
+    </footer>
+  </main>
+
+  <!-- Hidden silent-sos trigger (top-right corner) -->
+  <div id="silentTrigger" title="hidden silent trigger"></div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
