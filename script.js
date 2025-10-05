@@ -43,7 +43,7 @@ async function sendMessage(message) {
 
   setStatus('📡 Sending SOS — please wait...');
   try {
-    const resp = await fetch('/.netlify/functions/send-sms.js', {
+    const resp = await fetch('/.netlify/functions/send-sms', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message })
