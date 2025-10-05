@@ -27,6 +27,8 @@ exports.handler = async (event) => {
       process.env.MOM_PHONE_NUMBER,       // mom’s number
       process.env.SISTER_PHONE_NUMBER     // sister’s number
     ].filter(Boolean); // removes any empty value
+    console.log("📱 Sending to recipients:", recipients);
+
 
     if (!accountSid || !authToken || !fromNumber || recipients.length === 0) {
       return {
