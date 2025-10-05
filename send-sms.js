@@ -1,7 +1,7 @@
 const twilio = require('twilio');
 
 // MODE = 'demo' or 'live'
-const MODE = process.env.SAFEWALK_MODE || 'demo';
+const MODE = process.env.SAFEWALK_MODE || 'live';
 
 exports.handler = async (event) => {
   try {
