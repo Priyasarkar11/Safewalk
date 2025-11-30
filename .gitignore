@@ -1,0 +1,27 @@
+# Node
+node_modules/
+pm-debug.log
+yarn-error.log
+pnpm-lock.yaml
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Build outputs
+dist/
+build/
+.cache/
+.netlify/
+.vercel/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+logs/
+*.log
