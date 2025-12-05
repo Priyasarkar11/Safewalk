@@ -15,6 +15,7 @@
       <p class="sub">One-tap SOS — sends your live location to your emergency contact.</p>
     </header>
 
+    <!-- 🔴 Original SOS section (unchanged) -->
     <section class="card">
       <div class="info">
         <p><strong>Ready?</strong> If you feel unsafe, tap the red button below.</p>
@@ -25,12 +26,79 @@
       <p class="hint">Tip: You can add this page to your phone's home screen for quick access.</p>
     </section>
 
+    <!-- 🟦 Emergency Profile Section -->
+    <section class="card">
+      <h2>Emergency Profile</h2>
+      <p>These details help rescuers in an emergency. They are saved in your browser.</p>
+
+      <label>
+        Name:
+        <input type="text" id="userName" placeholder="Your name" />
+      </label>
+      <br />
+
+      <label>
+        Blood Group:
+        <input type="text" id="bloodGroup" placeholder="e.g. O+, B-" />
+      </label>
+      <br />
+
+      <label>
+        Medical Notes:
+        <textarea id="medicalNotes" placeholder="Asthma, diabetes, allergy etc."></textarea>
+      </label>
+    </section>
+
+    <!-- 🟨 Safe Walk Timer Section -->
+    <section class="card">
+      <h2>Safe Walk Mode</h2>
+      <p>
+        Select how long your walk will take.  
+        If you don't press <strong>"I am Safe"</strong> on time, the app will auto-trigger SOS.
+      </p>
+
+      <label>
+        I should reach in:
+        <select id="walkDuration">
+          <option value="5">5 minutes</option>
+          <option value="10">10 minutes</option>
+          <option value="15" selected>15 minutes</option>
+          <option value="20">20 minutes</option>
+          <option value="30">30 minutes</option>
+        </select>
+      </label>
+      <br /><br />
+
+      <button id="startWalkBtn">Start Safe Walk</button>
+      <button id="iAmSafeBtn" disabled>I am Safe</button>
+
+      <p id="walkStatus"></p>
+    </section>
+
+    <!-- 🟩 Visible Silent SOS Area -->
+    <section class="card">
+      <h2>Silent SOS</h2>
+      <p>Tap the area below 3 times quickly to send a Silent SOS.</p>
+      <div
+        id="hiddenZone"
+        style="
+          border: 1px dashed #888;
+          padding: 20px;
+          border-radius: 8px;
+          cursor: pointer;
+          text-align: center;
+        "
+      >
+        Tap here 3 times for Silent SOS
+      </div>
+    </section>
+
     <footer class="footer">
       <small>Demo mode available — toggle in README before going live.</small>
     </footer>
   </main>
 
-  <!-- Hidden silent-sos trigger (top-right corner) -->
+  <!-- 🟣 Your existing hidden top-right silent trigger (keep it!) -->
   <div id="silentTrigger" title="hidden silent trigger"></div>
 
   <script src="script.js" defer></script>
