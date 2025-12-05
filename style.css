@@ -5,17 +5,28 @@
   --accent-2:#ff7665;
   --glass: rgba(255,255,255,0.04);
   --muted:#cbd5e1;
+  --card-border: rgba(148,163,184,0.35);
+  --input-bg: rgba(15,23,42,0.75);
 }
-*{box-sizing:border-box}
-html,body{height:100%}
+
+/* Reset & base */
+*{
+  box-sizing:border-box;
+}
+html,body{
+  height:100%;
+}
 body{
   margin:0;
   font-family: Inter, "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial;
-  background: radial-gradient(circle at 10% 20%, rgba(255,75,92,0.06), transparent 10%), linear-gradient(180deg,var(--bg1),var(--bg2));
+  background: radial-gradient(circle at 10% 20%, rgba(255,75,92,0.06), transparent 10%),
+              linear-gradient(180deg,var(--bg1),var(--bg2));
   color:#fff;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
 }
+
+/* Top badge */
 .badge{
   position:fixed;
   left:12px;
@@ -28,26 +39,68 @@ body{
   color:var(--muted);
   z-index:20;
 }
+
+/* Layout wrapper */
 .wrap{
   max-width:420px;
   margin:90px auto 40px;
   padding:20px;
   text-align:center;
 }
+
+/* Header */
 header h1{
   margin:0;
   font-size:2.2rem;
   color: #f9ca24;
 }
-.sub{color:var(--muted); margin:6px 0 18px}
-.card{
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  padding:28px;
-  border-radius:16px;
-  box-shadow: 0 12px 40px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
-  border:1px solid rgba(255,255,255,0.03);
+.sub{
+  color:var(--muted);
+  margin:6px 0 18px;
+  font-size:0.98rem;
 }
-.info p{ margin:0 0 18px; color:#e6eef8; }
+
+/* Cards */
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(15,23,42,0.9));
+  padding:22px 20px;
+  border-radius:18px;
+  box-shadow: 0 18px 40px rgba(2,6,23,0.75),
+              inset 0 1px 0 rgba(255,255,255,0.03);
+  border:1px solid var(--card-border);
+  text-align:left;
+}
+
+/* space between cards */
+.card + .card{
+  margin-top:18px;
+}
+
+/* Card headings */
+.card h2{
+  margin:0 0 10px;
+  font-size:1.1rem;
+  font-weight:600;
+  color:#e5e7eb;
+}
+.card p{
+  margin:4px 0 10px;
+  font-size:0.92rem;
+  color:#cbd5e1;
+}
+
+/* Original info text */
+.info p{
+  margin:0 0 18px;
+  color:#e6eef8;
+}
+
+/* Center for first SOS card */
+.card:first-of-type{
+  text-align:center;
+}
+
+/* SOS button */
 .sos{
   display:inline-block;
   background: linear-gradient(45deg, var(--accent), var(--accent-2));
@@ -57,16 +110,162 @@ header h1{
   padding:16px 42px;
   border-radius:999px;
   cursor:pointer;
-  box-shadow: 0 12px 30px rgba(255,75,92,0.14);
-  transition: transform .12s ease, box-shadow .12s ease;
+  box-shadow: 0 12px 30px rgba(255,75,92,0.24);
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
 }
-.sos:active{ transform: scale(.98) }
-.sos:hover{ box-shadow: 0 18px 48px rgba(255,75,92,0.18) }
-.status{ margin-top:16px; font-size:1rem; color:#dbeafe; min-height:1.1em }
-.hint{ margin-top:12px; font-size:0.9rem; color:var(--muted) }
-.footer{ margin-top:24px; opacity:0.8; font-size:12px }
+.sos:active{
+  transform: scale(.97);
+}
+.sos:hover{
+  box-shadow: 0 18px 48px rgba(255,75,92,0.32);
+  filter:brightness(1.05);
+}
+.sos:disabled{
+  opacity:0.6;
+  cursor:not-allowed;
+  box-shadow:none;
+}
 
-/* hidden silent trigger top-right */
+/* Status & hint */
+.status{
+  margin-top:16px;
+  font-size:0.98rem;
+  color:#dbeafe;
+  min-height:1.1em;
+}
+.hint{
+  margin-top:12px;
+  font-size:0.9rem;
+  color:var(--muted);
+}
+.footer{
+  margin-top:24px;
+  opacity:0.8;
+  font-size:12px;
+  text-align:center;
+}
+
+/* ---------- Form controls (profile & safe walk) ---------- */
+.card label{
+  display:block;
+  margin-bottom:10px;
+  font-size:0.88rem;
+  color:#e5e7eb;
+}
+.card label input,
+.card label textarea,
+.card label select{
+  margin-top:4px;
+}
+
+input[type="text"],
+textarea,
+select{
+  width:100%;
+  padding:8px 10px;
+  border-radius:10px;
+  border:1px solid rgba(148,163,184,0.55);
+  background: var(--input-bg);
+  color:#e5e7eb;
+  font-size:0.9rem;
+  outline:none;
+  transition:border-color .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+textarea{
+  min-height:70px;
+  resize:vertical;
+}
+
+/* Focus states */
+input[type="text"]:focus,
+textarea:focus,
+select:focus{
+  border-color: var(--accent-2);
+  box-shadow: 0 0 0 1px rgba(248,113,113,0.6);
+  background: rgba(15,23,42,0.95);
+}
+
+/* Placeholder */
+::placeholder{
+  color:#64748b;
+}
+
+/* ---------- Safe Walk buttons ---------- */
+#startWalkBtn,
+#iAmSafeBtn{
+  display:inline-block;
+  border-radius:999px;
+  border:1px solid rgba(148,163,184,0.8);
+  padding:8px 18px;
+  font-size:0.9rem;
+  font-weight:500;
+  cursor:pointer;
+  background: rgba(15,23,42,0.85);
+  color:#e5e7eb;
+  margin-right:8px;
+  margin-bottom:6px;
+  transition: background .12s ease, transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+
+/* Primary style for Start Safe Walk */
+#startWalkBtn{
+  border-color:var(--accent-2);
+  background:linear-gradient(90deg, rgba(248,113,113,0.18), rgba(248,113,113,0.05));
+}
+
+/* Hover/active */
+#startWalkBtn:hover,
+#iAmSafeBtn:hover{
+  box-shadow:0 8px 18px rgba(15,23,42,0.8);
+  transform:translateY(-1px);
+}
+#startWalkBtn:active,
+#iAmSafeBtn:active{
+  transform:translateY(0);
+  box-shadow:none;
+}
+
+/* Disabled I am Safe */
+#iAmSafeBtn:disabled{
+  opacity:0.4;
+  cursor:not-allowed;
+  box-shadow:none;
+}
+
+/* Safe walk status text */
+#walkStatus{
+  margin-top:8px;
+  font-size:0.88rem;
+  color:#bfdbfe;
+}
+
+/* Make the select compact */
+#walkDuration{
+  max-width:180px;
+  display:inline-block;
+}
+
+/* ---------- Silent SOS visible area ---------- */
+#hiddenZone{
+  border:1px dashed rgba(248,250,252,0.5);
+  padding:18px;
+  border-radius:12px;
+  cursor:pointer;
+  text-align:center;
+  font-size:0.95rem;
+  background:rgba(15,23,42,0.75);
+  transition: background .12s ease, border-color .12s ease, transform .08s ease;
+}
+#hiddenZone:hover{
+  border-color:var(--accent-2);
+  background:rgba(15,23,42,0.95);
+}
+#hiddenZone:active{
+  transform:scale(0.98);
+}
+
+/* hidden silent trigger top-right (existing) */
 #silentTrigger{
   position:fixed;
   right:8px;
@@ -74,13 +273,24 @@ header h1{
   width:36px;
   height:36px;
   z-index:30;
-  /* keep it almost invisible but clickable */
   background:transparent;
   border-radius:6px;
 }
 
-/* responsive */
+/* ---------- Responsive ---------- */
 @media (max-width:420px){
-  .wrap{ margin-top:40px; padding:16px }
-  .sos{ padding:14px 32px; font-size:1rem }
+  .wrap{
+    margin-top:40px;
+    padding:16px;
+  }
+  header h1{
+    font-size:1.9rem;
+  }
+  .card{
+    padding:18px 16px;
+  }
+  .sos{
+    padding:14px 32px;
+    font-size:1.05rem;
+  }
 }
